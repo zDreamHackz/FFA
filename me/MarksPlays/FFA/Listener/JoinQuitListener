@@ -1,0 +1,31 @@
+package me.MarksPlays.FFA.Listener;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+
+import me.MarksPlays.FFA.Data.Data;
+
+public class JoinQuitListener implements Listener {
+	
+	@EventHandler
+	public void onJoin(PlayerJoinEvent e) {
+		Player p = e.getPlayer();
+		Location loc = p.getWorld().getSpawnLocation();
+		p.teleport(loc);
+		p.getInventory().clear();
+		me.MarksPlays.FFA.utils.Items.giveItems(p);
+		e.setJoinMessage(Data.prefix + "§a" + p.getName() + " §7hat das Spiel betreten.");
+	}
+	
+	@EventHandler
+	public void onQuit(PlayerQuitEvent e) {
+		Player p = e.getPlayer();
+		p.getInventory().clear();
+		e.setQuitMessage(Data.prefix + "§a" + p.getName() + " §7hat das Spiel verlassen.");
+	}
+	
+}
