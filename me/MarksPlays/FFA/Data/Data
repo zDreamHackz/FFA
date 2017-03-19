@@ -1,0 +1,8 @@
+package me.MarksPlays.FFA.Data;
+
+public class Data {
+	
+	public static String prefix = "§aF§bF§9A§8» §r";
+	public static String noPerm = "§fUnknown Command. Type " + "/help" + " for help.";
+
+}
